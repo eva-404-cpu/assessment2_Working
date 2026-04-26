@@ -165,3 +165,42 @@ img {
     font-family:"Verdana";
     border-radius:10px;
 }
+
+.chat_history {
+    margin:10px 0px 10px 0px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width:3px;
+    border-color:#395648;
+    field-sizing: content;
+    min-height: 2em;
+    max-height:200px;
+    overflow:scroll;
+    word-wrap:break-word;
+    overflow-wrap:break-word;
+}
+
+.message_form__input {
+    background-color:#ffeaff;
+    width:50%;
+    height:50px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width:3px;
+    border-color:#395648;
+    font-size:1em;
+    font-family:"Verdana";
+}
+
+.message_form__button {
+    border-radius: 10px;
+    border-style: solid;
+    border-width:3px;
+    border-color:#395648;
+    width:10%;
+    height:50px;
+    background-color:#395648;
+    color:#ffeaff;
+    font-size:1em;
+    font-family:"Verdana";
+}
