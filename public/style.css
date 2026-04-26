@@ -1,0 +1,61 @@
+body {
+    background-color:#ffeaff;
+    color: #395648;
+    font-family: "Verdana";
+    font-size:1em;
+}
+
+.navigation {
+    display:flex;
+    justify-content: center;
+}
+
+.navigation ul {
+    margin: 10px;
+    padding: 0px;
+    overflow:hidden;
+    width:100%;
+    background-color:#395648;
+    border-radius:10px;
+    height:auto;
+}
+
+.navigation ul li {
+    float:left;
+    background-color:#395648;
+    width:33.3%;
+    border:none;
+    font-size:1em;
+    font-family:"Verdana"
+}
+
+.navigation ul li a, ul li a:hover {
+    color:#ffeaff;
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    font-family: "Verdana";
+    padding: 10px;
+    font-size:1em;
+    font-family:"Verdana"
+}
+
+h1 {
+    text-align:center;
+    color:#395648;
+}
+
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction:column;
+    position:relative;
+}
+
+.banner img { 
+    width:95%;
+    height:auto;
+    border-radius:10px;
+    border-color:#395648;
+}
