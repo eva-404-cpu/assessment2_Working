@@ -45,6 +45,33 @@ h1 {
     color:#395648;
 }
 
+h2 {
+    color:#ffeaff;
+    margin:5px;
+}
+
+.section {
+    padding:10px;
+    background-color:#395648;
+    color:#ffeaff;
+    border-right:None;
+    border-left:None;
+    border-radius:10px;
+    border-top-width:3px;
+    border-bottom-width:3px;
+
+}
+
+.container {
+    display: flex;
+    align-items:flex-start;
+    position:relative;
+}
+
+p {
+    margin:5px;
+}
+
 .banner {
     display: flex;
     justify-content: center;
