@@ -83,6 +83,17 @@ img {
     margin: 10px;
 }
 
+#back_top_button {
+    color:#ffeaff;
+    background-color:#395648;
+    width:100%;
+    height:50px;
+    border-radius:10px;
+    margin-top:10px;
+    font-size:1em;
+    font-family:"Verdana"
+}
+
 .banner {
     display: flex;
     justify-content: center;
