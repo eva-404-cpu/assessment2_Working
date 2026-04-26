@@ -72,6 +72,17 @@ p {
     margin:5px;
 }
 
+img {
+    width:25%;
+    height:auto;
+    border-style:3px;
+    border-radius:50%;
+    border-style:solid;
+    border-color:#ffeaff;
+    border-width:3px;
+    margin: 10px;
+}
+
 .banner {
     display: flex;
     justify-content: center;
