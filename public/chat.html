@@ -20,5 +20,32 @@
         </DIV>
 
         <H1> Chat Page </H1>
+
+        <DIV CLASS = "section">
+            <DIV CLASS="sidenav">
+                <DIV CLASS="inbox__people">
+                    <H2>Active users</H2>
+                </DIV>
+            </DIV>
+        </DIV>
+
+        <BR>
+        <HR>
+        <DIV CLASS="content">
+        <DIV CLASS="chat_history"></DIV>
+        <DIV class="fallback"></DIV>
+        <DIV class="inbox__messages"></DIV>
+
+            <FORM CLASS="message_form">
+            <INPUT TYPE="text" CLASS="message_form__input" PLACEHOLDER="Type a message" />
+            <BUTTON CLASS="message_form__button" TYPE="submit">
+              Enter
+            </BUTTON>
+        </FORM>
+    </DIV>
+
+    <SCRIPT SRC="/socket.io/socket.io.js"></SCRIPT>
+    <SCRIPT SRC="js/client.js"></SCRIPT>
+
     </BODY>
 </HTML>
