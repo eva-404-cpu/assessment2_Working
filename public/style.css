@@ -97,3 +97,20 @@ img {
     border-radius:10px;
     border-color:#395648;
 }
+
+.direction-images{
+    display: flex;
+    gap:10px;
+    justify-content: center;
+    align-items:center;
+}
+
+.direction-images img{
+    width:100%;
+    height:auto;
+    display: block;
+    justify-content: center;
+    align-items:center;
+    border-color:#395648;
+    border-width:3px;
+}
