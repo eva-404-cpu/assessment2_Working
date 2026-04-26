@@ -114,3 +114,30 @@ img {
     border-color:#395648;
     border-width:3px;
 }
+
+.image_box {
+    position:relative;
+}
+
+.image_box .picture_button {
+    transform: translateX(50%);
+}
+
+.image_box img {
+    display:block;
+    width:92%;
+}
+
+.picture_button {
+    position:absolute;
+    background-color:#395648;
+    color:#ffeaff;
+    transform: translate(-50%,-50%);
+    top:75%;
+    bottom:25%;
+    width:50%;
+    height:50px;
+    font-size:1em;
+    font-family:"Verdana";
+    border-radius:10px;
+}
