@@ -94,6 +94,19 @@ img {
     font-family:"Verdana"
 }
 
+.fact-card {
+    border-style: dashed;
+    border-radius:10px;
+    border-width:3px;
+    border-color:#395648;
+    margin-bottom:10px;
+}
+
+.fact-card ul {
+    background-color:#ffeaff;
+    list-style-type:square;
+}
+
 .banner {
     display: flex;
     justify-content: center;
