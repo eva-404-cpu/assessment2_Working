@@ -1,15 +1,21 @@
 <!DOCTYPE HTML>
+<!-- Defines Language of Document As English -->
 <HTML LANG = 'en'>
     <HEAD>
+        <!-- LINK Tag Used To Link External CSS File To Page -->
         <LINK REL= "stylesheet" TYPE = "text/css" HREF = "style.css">
+        <!-- Define the Metadata Of The Page - utf-8 covers amost every character/symbol in the world (default)-->
         <META CHARSET= "utf-8">
+        <!-- Define The Title Of The HTML Document- Shown In Page's Tab-->
         <TITLE> Home Page </TITLE>
     </HEAD>
 
     <BODY>
+        <!-- Website Banner-->
         <DIV CLASS = "banner">
             <IMG SRC = "img/banner.png" ALT = "Decorative image containing Me and the people/animals I love ">
         </DIV>
+        <!-- Navigation Bar -->
         <DIV CLASS = "navigation">
             <UL>
                 <LI><A HREF = "index.html"> Home Page </A></LI>
@@ -18,7 +24,10 @@
             </UL>
         </DIV>
 
+        <!-- Page Title -->
         <H1> Home Page </H1>
+
+        <!-- Section 1: Brief Description On How I Am -->
         <DIV CLASS = "section">
             <H2>
                 Hello, I'm Eva!
@@ -45,12 +54,14 @@
         <!-- Two Images To Go To More About and Chat Pages -->
         <DIV CLASS = "container">
             <DIV CLASS = "direction-images">
+                <!-- First Image Button Links To 'More About' Page -->
                 <DIV CLASS="image_box">
                     <IMG SRC="img/dave.HEIC">
                     <A HREF = "moreAbout.html">
                         <BUTTON CLASS="picture_button"> More About Me </BUTTON>
                     </A>
                 </DIV>
+                <!-- Second Image Button Links To 'Chat' Page -->
                 <DIV CLASS="image_box">
                     <IMG SRC="img/catsHugging.HEIC">
                     <A HREF = "chat.html">
@@ -60,6 +71,7 @@
             </DIV>
         </DIV>
 
+        <!-- Section 2: Describes My Experience And Skills -->
         <DIV CLASS="section">
             <H2>
                 Skills and Experience
@@ -77,7 +89,9 @@
                 </P>
             </DIV>
         </DIV>
+        <!-- A Button To Bring The User Back To The Top Of The Webpage -->
         <BUTTON ID="back_top_button" onclick="goToTop()" TITLE ="Back To Top">Back To Top</BUTTON>
     </BODY>
+    <!-- LINK to external JavaScript script 'script' (For The Back To The Top Button) -->
     <SCRIPT SRC="script.js"></SCRIPT>
 </HTML>
