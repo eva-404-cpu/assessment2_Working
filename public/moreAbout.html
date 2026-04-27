@@ -1,16 +1,22 @@
 <!DOCTYPE HTML>
+<!-- Defines The Language Of The Document As English-->
 <HTML LANG = 'en'>
     <HEAD>
+        <!-- LINK Tag Used To Link External CSS File To Page -->
         <LINK REL= "stylesheet" TYPE = "text/css" HREF = "style.css">
+        <!-- Define the Metadata Of The Page - utf-8 covers amost every character/symbol in the world (default)-->
         <META CHARSET= "utf-8">
+        <!-- Define The Title Of The HTML Document- Shown In Page's Tab-->
         <TITLE> Home Page </TITLE>
-        <SCRIPT SRC="script.js"></SCRIPT>
     </HEAD>
 
     <BODY>
+        <!-- Website Banner-->
         <DIV CLASS = "banner">
             <IMG SRC = "img/banner.png" ALT = "Decorative image containing Me and the people/animals I love ">
         </DIV>
+
+        <!-- Navigation Bar-->
         <DIV CLASS = "navigation">
             <UL>
                 <LI><A HREF = "index.html"> Home Page </A></LI>
@@ -19,8 +25,10 @@
             </UL>
         </DIV>
 
+        <!-- Page Title -->
         <H1> More About Page </H1>
 
+        <!-- Fact Card Containing Basic 'Ice Breaker' Topics-->
         <DIV CLASS ="fact-card">
             <H2 STYLE = "color:#395648;margin-left:10px;">
                 Fun Facts
@@ -35,12 +43,13 @@
             </UL>
         </DIV>
 
+        <!-- Section 1: Describes My Personal Life-->
         <DIV CLASS = "section">
             <H2>
                 My Personal Life
             </H2>
             <DIV CLASS = "container">
-                <IMG SRC = "img/goat.JPG" ALT ="My boyfriend and I standing beside a highland cow">
+                <IMG SRC = "img/goat.JPG" ALT ="A Picture of me very excitedly feeding a goat">
                 <P>
                     Spending time with family is important to me, creating memories with the people I love is a priority in life. 
                     One of our traditions is to watch an episode of a TV series together every night. This started during COVID 
@@ -55,12 +64,13 @@
                 </P>
             </DIV>
         </DIV>
-        <!-- Image with button to external link -->
+        <!-- A short paragraph describing my love for Aviemore and encouraging people to go there themselves -->
         <P>
                 For as long as I can remember, my family and I have loved Aviemore. It's the place I feel most at home. 
                 Aviemore is a place for everyone, activities range from quad biking (which is AWESOME) to relaxing days at a spa. 
                 I wish that everyone could find their Aviemore, maybe Aviemore is your Aviemore.
         </P>
+        <!-- Image with button to external link -->
         <DIV CLASS = "container">
             <DIV CLASS = "banner">
                 <IMG SRC = "img/highlandCow.HEIC">
@@ -70,6 +80,7 @@
             </DIV>
         </DIV>
 
+        <!-- Section 2: A short description describing my hobbies -->
         <DIV CLASS = "section">
             <H2> 
                 My Hobbies
@@ -84,7 +95,9 @@
                 <IMG SRC = "img/daveHouse.heic" ALT= "My dog 'Dave' walking towards the camera">
             </DIV>
         </DIV>
+        <!-- A Button To Bring The User Back To The Top Of The Webpage -->
         <BUTTON ID="back_top_button" onclick="goToTop()" TITLE ="Back To Top">Back To Top</BUTTON>
     </BODY>
+    <!-- LINK to external JavaScript script 'script' (For The Back To The Top Button) -->
     <SCRIPT SRC="script.js"></SCRIPT>
 </HTML>
