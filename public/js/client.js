@@ -11,7 +11,6 @@ const newUserConnected = function (data) {
     userName = 'user-' +id;
     //console.log(typeof(userName));   
     
-
     //emit an event with the user id
     socket.emit("new user", userName);
     //call
@@ -26,7 +25,6 @@ const addToUsersBox = function (userName) {
         return;
     
     }
-    
     //setup the divs for displaying the connected users
     //id is set to a string including the username
     const userBox = `
@@ -37,12 +35,10 @@ const addToUsersBox = function (userName) {
     //set the inboxPeople div with the value of userbox
     inboxPeople.innerHTML += userBox;
 };
-
 //call 
 socket.on("connect", () => {
   newUserConnected();
 });
-
 //when a new user event is detected
 socket.on("new user", function (data) {
   // They are added to the list of active users 
@@ -53,7 +49,6 @@ socket.on("new user", function (data) {
   newUser = data[data.length - 1]
   window.alert(`${newUser} Has Joined The Chat!`)
 });
-
 //when a user leaves
 socket.on("user disconnected", function (userName) {
   // When a user leaves, a alert window pops up to announce their exit 
@@ -107,20 +102,17 @@ const addNewMessage = ({ user, message }) => {
 
 messageForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
   // If a message is entered with no content, nothing will be emitted so 
   // it looks like nothing has happened
   if (!inputField.value) {
     return;
   } 
-
   // If there is content, an event is sent to the server 
   // which says that a chat message has been entered with the username and message 
   socket.emit("chat message", {
     message: inputField.value,
     nick: userName,
   });
-
   // After the event has been sent, an event is  sent to the server 
   // saying that the user is not typing anymore and clears the message field
   socket.emit("notTyping",userName)
@@ -136,7 +128,6 @@ socket.on("chat message", function (data) {
 });
 
 inputField.addEventListener("input", () => {
-  
   const value = inputField.value.trim();
   // When the length of the message input field is 0, the 'User is typing...' message is 'cleared.
   if (value.length === 0) {
