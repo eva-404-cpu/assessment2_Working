@@ -205,3 +205,33 @@ img {
     font-family:"Verdana";
 }
 
+.incoming__message,
+.outgoing__message {
+    display: flex;
+    margin: 10px;;
+}
+
+.incoming__message {
+    justify-content: flex-start;
+}
+
+.outgoing__message {
+    justify-content: flex-end;
+}
+
+.received__message {
+    padding: 10px;
+    border-radius: 10px;
+    border-style:dashed;
+    width: 90%;
+    word-wrap: break-word;
+}
+
+.sent__message {
+    background: #395648;
+    color: #ffeaff;
+    padding: 10px;
+    border-radius: 10px;
+    width: 90%;
+    word-wrap: break-word;
+}
