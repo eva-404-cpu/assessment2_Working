@@ -40,35 +40,42 @@ const addToUsersBox = function (userName) {
 
 //call 
 socket.on("connect", () => {
-  console.log("SOCKET CONNECTED:", socket.id);
   newUserConnected();
 });
 
 //when a new user event is detected
 socket.on("new user", function (data) {
+  // They are added to the list of active users 
   data.map(function (user) {
           return addToUsersBox(user);
       });
+  // When a new user joins the chat, an alert window pops up to welcome them
   newUser = data[data.length - 1]
   window.alert(`${newUser} Has Joined The Chat!`)
 });
 
 //when a user leaves
 socket.on("user disconnected", function (userName) {
+  // When a user leaves, a alert window pops up to announce their exit 
   window.alert(` ${userName} has Left The Chat`)
+  // They are removed from the list of active users 
   document.querySelector(`.${userName}-userlist`).remove();
 });
 
-
+// Receives data from 'chat.html' script
 const inputField = document.querySelector(".message_form__input");
 const messageForm = document.querySelector(".message_form");
 const messageBox = document.querySelector(".chat_history");
 const currentlyTyping = document.querySelector('.currentlyTyping');
 
 const addNewMessage = ({ user, message }) => {
+  // Finds the current time
   const time = new Date();
   const formattedTime = time.toLocaleString("en-US", { hour: "numeric", minute: "numeric" });
 
+  // Constructs HTML for other user's messages so the browser can
+  // display the information correctly 
+  // The message contains the users: username, message and the time it was sent
   const receivedMsg = `
   <div class="incoming__message">
     <div class="received__message">
@@ -80,6 +87,9 @@ const addNewMessage = ({ user, message }) => {
     </div>
   </div>`;
 
+  // Constructs HTML for the user's messages so the browser can
+  // display the information correctly 
+  // The message contains the users: username, message and the time it was sent
   const myMsg = `
   <div class="outgoing__message">
     <div class="sent__message">
@@ -93,79 +103,56 @@ const addNewMessage = ({ user, message }) => {
   //is the message sent or received
   messageBox.innerHTML += user === userName ? myMsg : receivedMsg;
   console.log('messageBox:',messageBox)
-  
-  socket.on("notTyping", (name) => {
-  console.log("STOP TYPING RECEIVED:", name);
-  currentlyTyping.textContent = "";})
 };
 
 messageForm.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  // If a message is entered with no content, nothing will be emitted so 
+  // it looks like nothing has happened
   if (!inputField.value) {
     return;
   } 
 
+  // If there is content, an event is sent to the server 
+  // which says that a chat message has been entered with the username and message 
   socket.emit("chat message", {
     message: inputField.value,
     nick: userName,
   });
+
+  // After the event has been sent, an event is  sent to the server 
+  // saying that the user is not typing anymore and clears the message field
   socket.emit("notTyping",userName)
   inputField.value = "";
 });
 
 socket.on("chat message", function (data) {
+  //When a chat message is sent to the server, the addNewMessage event is called so that the 
+  // entered message can be displayed on the chat box to the users of the chat
   addNewMessage({ user: data.nick, message: data.message });
+  // After this event is called, the 'User is typing... ' message is 'cleared'.
   currentlyTyping.textContent = ``;
 });
 
-/*
 inputField.addEventListener("input", () => {
-  const isEmpty = inputField.value.trim().length === 0;
-  if(isEmpty) {
-    socket.emit("notTyping",userName);
-    currentlyTyping.textContent = "";
-  }
-  if (!isEmpty) {
-    socket.emit("typing", userName);
-  }
-});
-*/
-
-inputField.addEventListener("input", () => {
+  
   const value = inputField.value.trim();
-
+  // When the length of the message input field is 0, the 'User is typing...' message is 'cleared.
   if (value.length === 0) {
-    socket.emit("notTyping", userName);
+    currentlyTyping.textContent = ``
     return;
   }
-
+  // When an value is detected in the message input field, the 'User is typing...' message is displayed to other users of the chat 
   socket.emit("typing", userName);
 });
 
-/*
-inputField.addEventListener("keydown", (event) => {
-  if (event.key == "Backspace" && (inputField.value).length == 1) {
-    console.log("One!")
-    currentlyTyping.textContent = "";
-  }
-});
-
-inputField.addEventListener("input", (event) => {
-  if ((inputField.value.trim().length) === 0) {
-    console.log("One!")
-    currentlyTyping.textContent = ``;
-    console.log(currentlyTyping)
-  }
-});
-*/
-
-
+// Listens for when a user is typing and displays 'User is typing' message
 socket.on("typing", (name) => {
-  console.log("SERVER got TYPING:",name)
     currentlyTyping.textContent = `${name} is typing...`;
   });
 
+  // Listens for when a user is not typing and 'clears' the 'User is typing...' message
 socket.on("NotTyping", (name) => {
-  console.log("SERVER got NOT TYPING:",name)
     currentlyTyping.textContent = "";
   });
