@@ -1,5 +1,4 @@
 //required for front end communication between client and server
-console.log('Is Working')
 const socket = io();
 const inboxPeople = document.querySelector(".inbox__people");
 let userName = "";
@@ -119,6 +118,7 @@ socket.on("chat message", function (data) {
   currentlyTyping.textContent = ``;
 });
 
+
 let timeOut;
 
 inputField.addEventListener("input", () => {
@@ -127,8 +127,9 @@ inputField.addEventListener("input", () => {
 
   // ALWAYS emit typing first when user types something
   if (!isEmpty) {
-    currentlyTyping.textContent = `X`;
-    socket.emit("typing", userName);
+    currentlyTyping.textContent = `${userName} is typing...`;
+    socket.broadcast.emit("typing", userName);
+    return
   }  else {
     currentlyTyping.textContent = ``;
   } 
@@ -146,6 +147,7 @@ inputField.addEventListener("input", () => {
 });
 
 
+/*
 inputField.addEventListener("keydown", (event) => {
   if (event.key == "Backspace" && (inputField.value).length == 1) {
     console.log("One!")
@@ -160,6 +162,8 @@ inputField.addEventListener("input", (event) => {
     console.log(currentlyTyping)
   }
 });
+*/
+
 
 socket.on("typing", (name) => {
   console.log("SERVER got TYPING:",name)

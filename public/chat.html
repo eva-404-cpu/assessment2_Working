@@ -1,16 +1,21 @@
 <!DOCTYPE HTML>
+<!-- Defines The Language Of The Document As English-->
 <HTML LANG = 'en'>
     <HEAD>
+        <!-- LINK Tag Used To Link External CSS File To Page -->
         <LINK REL= "stylesheet" TYPE = "text/css" HREF = "style.css">
+        <!-- Define the Metadata Of The Page - utf-8 covers amost every character/symbol in the world (default)-->
         <META CHARSET= "utf-8">
+        <!-- Define The Title Of The HTML Document- Shown In Page's Tab -->
         <TITLE> Home Page </TITLE>
-        <SCRIPT SRC="script.js"></SCRIPT>
     </HEAD>
 
     <BODY>
+        <!-- Website Banner -->
         <DIV CLASS = "banner">
             <IMG SRC = "img/banner.png" ALT = "Decorative image containing Me and the people/animals I love ">
         </DIV>
+        <!-- Navigation Bar -->
         <DIV CLASS = "navigation">
             <UL>
                 <LI><A HREF = "index.html"> Home Page </A></LI>
@@ -19,8 +24,10 @@
             </UL>
         </DIV>
 
+        <!-- Page Title -->
         <H1> Chat Page </H1>
 
+        <!-- Section 1: Displays All The Active Users That Are Using The Chat-->
         <DIV CLASS = "section">
             <DIV CLASS="sidenav">
                 <DIV CLASS="inbox__people">
@@ -31,11 +38,15 @@
 
         <BR>
         <HR>
+
+        <!-- Section 2: The Chat Box - All The Chats Between two users in that session are stored here-->
         <DIV CLASS="content">
         <DIV CLASS="chat_history"></DIV>
         <DIV class="fallback"></DIV>
         <DIV class="inbox__messages"></DIV>
 
+        <DIV CLASS = "currentlyTyping"></DIV>
+            <!-- -->
             <FORM CLASS="message_form">
             <INPUT TYPE="text" CLASS="message_form__input" PLACEHOLDER="Type a message" />
             <BUTTON CLASS="message_form__button" TYPE="submit">
