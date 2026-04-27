@@ -1,7 +1,9 @@
+// Import the files/ modules needed for the chat application
 const express = require("express");
 const socket = require("socket.io");
-const path = require("path");
+const path = require("path")
 
+// Create a new instance of the express framework
 const app = express();
 
 // App setup
@@ -24,37 +26,39 @@ const io = socket(server);
 const activeUsers = new Set();
 
 io.on("connection", function (socket) {
-  console.log("Made socket connection");
-
+  // When a new user enters the chat, they are added to the 'active users' list 
+  // which is displayed to everyone in the chat
   socket.on("new user", function (data) {
     socket.userId = data;
     activeUsers.add(data);
     io.emit("new user", [...activeUsers]);
-    io.emit("userJoined", {
-  user: data,
-  message: "has joined!"
-});
   });
 
   socket.on("disconnect", function () {
+    // When a user disconnected, the event 'user disconnected' is sent to the client 
+    // which results in the user being removed from the active users list and an alert
+    // informing the other users  of their exit
     if(socket.userId) {
     activeUsers.delete(socket.userId);
     io.emit("user disconnected", socket.userId);}
   });
 
+  // When a message is entered, the server sends it to the client so that a message can 
+  // appear in the chat history
   socket.on("chat message", function (data) {
     io.emit("chat message", data);
   });
 
-
+  // When the event 'typing' is sent to the server, the 'User is typing...' message 
+  // is displayed to everyone but the user
   socket.on("typing",(name) => {
     socket.broadcast.emit("typing",name)
-    console.log("THIS IS WORKING")
   })
 
+  // When the event 'notTyping' is sent to the server, the 'User is typing.. ' message is cleared for everyone but the user
+  // Since it doesn't appear on the user's screen the message is 'cleared' completely
   socket.on("notTyping",name => {
     socket.broadcast.emit("notTyping",name);
-    console.log("WOOOOO")
   }) 
 
   });
