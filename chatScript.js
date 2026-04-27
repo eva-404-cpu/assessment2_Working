@@ -46,8 +46,15 @@ io.on("connection", function (socket) {
     io.emit("chat message", data);
   });
 
+
   socket.on("typing",(name) => {
-    socket.broadcast.emit('typing',name)
+    socket.broadcast.emit("typing",name)
     console.log("THIS IS WORKING")
   })
+
+  socket.on("notTyping",name => {
+    socket.broadcast.emit("notTyping",name);
+    console.log("WOOOOO")
+  }) 
+
   });

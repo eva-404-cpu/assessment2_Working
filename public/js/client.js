@@ -109,7 +109,7 @@ messageForm.addEventListener("submit", (e) => {
     message: inputField.value,
     nick: userName,
   });
-
+  socket.emit("notTyping",userName)
   inputField.value = "";
 });
 
@@ -118,34 +118,29 @@ socket.on("chat message", function (data) {
   currentlyTyping.textContent = ``;
 });
 
-
-let timeOut;
+/*
+inputField.addEventListener("input", () => {
+  const isEmpty = inputField.value.trim().length === 0;
+  if(isEmpty) {
+    socket.emit("notTyping",userName);
+    currentlyTyping.textContent = "";
+  }
+  if (!isEmpty) {
+    socket.emit("typing", userName);
+  }
+});
+*/
 
 inputField.addEventListener("input", () => {
+  const value = inputField.value.trim();
 
-  const isEmpty = inputField.value.trim().length === 0;
+  if (value.length === 0) {
+    socket.emit("notTyping", userName);
+    return;
+  }
 
-  // ALWAYS emit typing first when user types something
-  if (!isEmpty) {
-    currentlyTyping.textContent = `${userName} is typing...`;
-    socket.broadcast.emit("typing", userName);
-    return
-  }  else {
-    currentlyTyping.textContent = ``;
-  } 
-
-  clearTimeout(timeOut);
-
-  timeOut = setTimeout(() => {
-
-    // only emit notTyping after user actually stops
-    if (inputField.value.trim().length === 0) {
-      currentlyTyping.textContent = ``;
-    }
-
-  }, 800);
+  socket.emit("typing", userName);
 });
-
 
 /*
 inputField.addEventListener("keydown", (event) => {
@@ -168,4 +163,9 @@ inputField.addEventListener("input", (event) => {
 socket.on("typing", (name) => {
   console.log("SERVER got TYPING:",name)
     currentlyTyping.textContent = `${name} is typing...`;
+  });
+
+socket.on("NotTyping", (name) => {
+  console.log("SERVER got NOT TYPING:",name)
+    currentlyTyping.textContent = "";
   });
